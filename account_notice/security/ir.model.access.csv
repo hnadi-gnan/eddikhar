@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_notice_account_notice,account_notice.account_notice,model_account_notice_account_notice,base.group_user,1,1,1,1
