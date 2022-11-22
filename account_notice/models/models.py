@@ -8,7 +8,7 @@ class AccountMove(models.Model):
 
     notice = fields.Boolean(string = 'Is Notice', required=True, readonly=True, copy=False, default = True)
     notice_type = fields.Selection(selection=[(
-        'deduct', 'Deduction'), ('add', 'Addition')], string='Notice Type', required=True, readonly=True, copy=False, tracking=True)
+        'send', 'Send'), ('receive', 'Receive')], string='Notice Type', required=True, readonly=True, copy=False, tracking=True)
 
     def _inter_company_create_invoices(self):
         ''' Create cross company invoices.
@@ -24,8 +24,8 @@ class AccountMove(models.Model):
             'out_refund': 'in_refund',
         }
         notice_inverse = {
-            'deduct': 'add',
-            'add': 'deduct',
+            'send': 'receive',
+            'receive': 'send',
         }
         for inv in self:
             invoice_vals = inv._inter_company_prepare_invoice_data(inverse_types[inv.move_type], notice_inverse[inv.notice_type])
