@@ -23,7 +23,7 @@
           <attribute name='invisible'>1</attribute>
         </xpath>
         <xpath expr="//sheet/group[1]/group[1]/div[1]" position="inside">
-          <label for="partner_id" string="Partner" style="font-weight:bold;" attrs="{'invisible': [('notice_type', 'not in', ('deduct', 'add'))]}" modifiers="{'invisible': [['move_type','not in', ['deduct','add']]]}" />
+          <label for="partner_id" string="Partner" style="font-weight:bold;" attrs="{'invisible': [('notice_type', 'not in', ('send', 'receive'))]}" modifiers="{'invisible': [['move_type','not in', ['send','receive']]]}" />
         </xpath>
       </field>
     </record>
@@ -36,53 +36,53 @@
       </field>
     </record>
   -->
-    <record id="account_notice.action_notice_deduction" model="ir.actions.act_window">
-      <field name="name">Deduction Notices</field>
+    <record id="account_notice.action_notice_send" model="ir.actions.act_window">
+      <field name="name">Send Notices</field>
       <field name="res_model">account.move</field>
-      <field name="domain">[('move_type', '=', 'out_invoice'), ('notice', '=', True), ('notice_type', '=', 'deduct')]</field>
-      <field name="context">{'default_move_type': 'out_invoice', 'default_notice': True, 'default_notice_type': 'deduct' }</field>
+      <field name="domain">[('move_type', '=', 'out_invoice'), ('notice', '=', True), ('notice_type', '=', 'send')]</field>
+      <field name="context">{'default_move_type': 'out_invoice', 'default_notice': True, 'default_notice_type': 'send' }</field>
     </record>
 
-    <record id="account_notice.action_view_notice_deduction_tree" model="ir.actions.act_window.view">
+    <record id="account_notice.action_view_notice_send_tree" model="ir.actions.act_window.view">
       <field name="sequence" eval="1" />
       <field name="view_mode">tree</field>
       <field name="view_id" ref="account.view_invoice_tree" />
-      <field name="act_window_id" ref="account_notice.action_notice_deduction" />
+      <field name="act_window_id" ref="account_notice.action_notice_send" />
     </record>
 
-    <record id="account_notice.action_view_notice_deduction_form" model="ir.actions.act_window.view">
+    <record id="account_notice.action_view_notice_send_form" model="ir.actions.act_window.view">
       <field name="sequence" eval="2" />
       <field name="view_mode">form</field>
       <field name="view_id" ref="account_notice.view_notice_form" />
-      <field name="act_window_id" ref="account_notice.action_notice_deduction" />
+      <field name="act_window_id" ref="account_notice.action_notice_send" />
     </record>
 
 
-    <record id="account_notice.action_notice_addition" model="ir.actions.act_window">
-      <field name="name">Addition Notices</field>
+    <record id="account_notice.action_notice_receive" model="ir.actions.act_window">
+      <field name="name">Receive Notices</field>
       <field name="res_model">account.move</field>
-      <field name="domain">[('move_type', '=', 'in_invoice'), ('notice', '=', True), ('notice_type', '=', 'add')]</field>
-      <field name="context">{'default_move_type': 'in_invoice', 'default_notice': True, 'default_notice_type': 'add' }</field>
+      <field name="domain">[('move_type', '=', 'in_invoice'), ('notice', '=', True), ('notice_type', '=', 'receive')]</field>
+      <field name="context">{'default_move_type': 'in_invoice', 'default_notice': True, 'default_notice_type': 'receive' }</field>
     </record>
 
-    <record id="account_notice.action_view_notice_addition_tree" model="ir.actions.act_window.view">
+    <record id="account_notice.action_view_notice_receive_tree" model="ir.actions.act_window.view">
       <field name="sequence" eval="1" />
       <field name="view_mode">tree</field>
       <field name="view_id" ref="account.view_in_invoice_tree" />
-      <field name="act_window_id" ref="account_notice.action_notice_addition" />
+      <field name="act_window_id" ref="account_notice.action_notice_receive" />
     </record>
 
-    <record id="account_notice.action_view_notice_addition_form" model="ir.actions.act_window.view">
+    <record id="account_notice.action_view_notice_receive_form" model="ir.actions.act_window.view">
       <field name="sequence" eval="2" />
       <field name="view_mode">form</field>
       <field name="view_id" ref="account_notice.view_notice_form" />
-      <field name="act_window_id" ref="account_notice.action_notice_addition" />
+      <field name="act_window_id" ref="account_notice.action_notice_receive" />
     </record>
 
 
     <menuitem name="Notices" id="account_notice.notices" parent="account_accountant.menu_accounting" sequence="30" />
-    <menuitem name="Deduction" id="account_notice.notice_deduction" parent="account_notice.notices" action="account_notice.action_notice_deduction" />
-    <menuitem name="Addition" id="account_notice.notice_addition" parent="account_notice.notices" action="account_notice.action_notice_addition" />
+    <menuitem name="Send" id="account_notice.notice_send" parent="account_notice.notices" action="account_notice.action_notice_send" />
+    <menuitem name="Receive" id="account_notice.notice_receive" parent="account_notice.notices" action="account_notice.action_notice_receive" />
     <record id="account.action_move_out_invoice_type" model="ir.actions.act_window">
       <field name="domain">[('move_type', '=', 'out_invoice'), ('notice', '=', False)]</field>
       <field name="context">{'default_move_type': 'out_invoice', 'default_notice': False}</field>
