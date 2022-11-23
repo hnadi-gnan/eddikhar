@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+         
+    <!-- actions opening views on models -->
+
+    <!--
+<record model="ir.actions.act_window" id="rpi.countries_window">
+      <field name="name">Countries</field>
+      <field name="res_model">rpi.rpi</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+      
+      
+      <record model="ir.actions.act_window" id="rpi.cities_window">
+      <field name="name">Cities</field>
+      <field name="res_model">rpi.cities</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+      
+      
+      <record model="ir.actions.act_window" id="rpi.regions_window">
+      <field name="name">Regions</field>
+      <field name="res_model">rpi.regions</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+      
+      
+      
+      
+    <record model="ir.actions.act_window" id="rpi.proprty_window">
+      <field name="name">Proprties</field>
+      <field name="res_model">rpi.proprty</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+
+    <!-- server action to the one above -->
+
+      <!--
+    <record model="ir.actions.server" id="rpi.action_server">
+      <field name="name">rpi server</field>
+      <field name="model_id" ref="model_rpi_rpi"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+
+    
+
+    <!-- menu categories -->
+
+    
+    <!--
+    <menuitem name="Contract" id="rpi_menu_2" parent="rpi_menu_root" sequence="2"/>
+    <menuitem name="Payments" id="rpi_menu_3" parent="rpi_menu_root" sequence="3"/>
+    <menuitem name="Configuration" id="rpi_menu_4" parent="rpi_menu_root" sequence="4"/>
+-->
+
+    <!-- actions -->
+<!--
+    <menuitem name="Countries" id="rpi.countries" parent="rpi_menu_1" sequence="1"
+              action="rpi.countries_window"/>
+    <menuitem name="Cities" id="rpi.cities" parent="rpi_menu_1" sequence="2"
+              action="rpi.cities_window"/>
+    <menuitem name="Regions" id="rpi.regions" parent="rpi_menu_1" sequence="3"
+              action="rpi.regions_window"/>
+    <menuitem name="Land" id="rpi.land" parent="rpi_menu_1" sequence="4"
+              action="rpi.proprty_window"/>
+    <menuitem name="Buldings" id="rpi.bulding" parent="rpi_menu_1" sequence="5"
+              action="rpi.proprty_window"/>
+    <menuitem name="Unit" id="rpi.units" parent="rpi_menu_1" sequence="6"
+              action="rpi.proprty_window"/>
+      
+    
+    
+    <menuitem name="Payments" id="rpi.payments" parent="rpi_menu_3"
+            action="rpi.countries_window"  />
+    <menuitem name="Settings" id="rpi.settings" parent="rpi_menu_4"
+              action="rpi.countries_window"/>       
+-->    
+
+  </data>
+</odoo>

@@ -1,0 +1,111 @@
+<odoo>
+    <data>
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="employee_appraisal.kpilist_action_window">
+            <field name="name">Employee Appraisal window</field>
+            <field name="res_model">hr.kpiitem</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="employee_appraisal.report_list_action_window">
+            <field name="name">Employee Appraisal report window</field>
+            <field name="res_model">hr.appraisal.report</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="employee_appraisal.run_list_action_window">
+            <field name="name">Employee Appraisal report run window</field>
+            <field name="res_model">hr.appraisal.report.run</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- Top menu item -->
+
+        <menuitem name="Employee Appraisal" id="employee_appraisal.menu_root"/> 
+        <menuitem name="KPI List" id="empapp_menu_1" parent="employee_appraisal.menu_root" action = "employee_appraisal.kpilist_action_window"/>
+        <menuitem name="Appraisal" id="empapp_menu_2" parent="employee_appraisal.menu_root" action = "employee_appraisal.report_list_action_window"/>
+        <menuitem name="Appraisal Runs" id="empapp_menu_3" parent="employee_appraisal.menu_root" action = "employee_appraisal.run_list_action_window"/>
+
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="employee_appraisal.hr_kpiitem_list">
+            <field name="name">kpiitem.tree</field>
+            <field name="model">hr.kpiitem</field>
+            <field name="arch" type="xml">
+            <tree>
+                <field name="name" groups="base.group_multi_company" />
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="employee_appraisal.appraisal_report_list">
+            <field name="name">appraisal.report.tree</field>
+            <field name="model">hr.appraisal.report</field>
+            <field name="arch" type="xml">
+            <tree>
+                <field name="name" groups="base.group_multi_company" />
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+            </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="employee_appraisal.appraisal_report_run_list">
+            <field name="name">appraisal.report.run.tree</field>
+            <field name="model">hr.appraisal.report.run</field>
+            <field name="arch" type="xml">
+                <tree string="Appraisal reports Batches (runs)" sample="1">
+                    <field name="name"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="state"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="state" decoration-success="state == 'paid' or state == 'done'" decoration-info="state == 'draft' or state == 'verify'" widget="badge" optional="show"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="employee_appraisal.appraisal_report_run_form">
+            <field name="name">appraisal.report.run.form</field>
+            <field name="model">hr.appraisal.report.run</field>
+            <field name="arch" type="xml">
+                <form string="Appraisal report Batches">
+                    <header>
+                        <!-- this is the generate button-->
+                        <button name="employee_appraisal.action_hr_appraisal_report_by_employees" type="action" string="Generate Appraisal Reports" class="oe_highlight"/>
+                        <!--this is the set to draft button-->
+                        <button string="Set to Draft" name="action_draft" type="object" states="verify,close"/>
+                        <field name="state" widget="statusbar"/>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_open_appraisal_reports" class="oe_stat_button" icon="fa-book" type="object" help="Generated Appraisal Reports" attrs="{'invisible': [('appraisal_report_count', '=', 0)]}">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value"><field name="appraisal_report_count"/></span>
+                                    <span class="o_stat_text">Appraisal Reports</span>
+                                 </div>
+                            </button>
+                        </div>
+                    </header>
+                    <sheet>
+                        <label for="name" string="Batch Name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. April 2021"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <label for="date_start" string="Period"/>
+                                <div class="o_row">
+                                    <field name="date_start" class="oe_inline"/> - <field name="date_end" class="oe_inline"/>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_appraisal_report" model="ir.sequence">
+            <field name="name">Appraisal Report</field>
+            <field name="code">appraisal.report</field>
+            <field name="prefix">APPREP-</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

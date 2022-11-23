@@ -1,0 +1,19 @@
+<!-- this is the generate button-->
+<!--<button name="%(action_hr_payslip_by_employees)d" type="action" states="draft" string="Generate Appraisal Reports" class="oe_highlight"/>-->
+<!--this is the appraisal report generate pdf button-->
+<!--<button name="action_validate" type="object" string="Validate" states="verify" class="oe_highlight" context="{'payslip_generate_pdf': True}"/>-->
+<!--this is the mark as paid button in the payslips which will be changed later-->
+<!--<button string="Mark as paid" name="action_paid" type="object" states="close" class="oe_highlight"/>-->
+                        
+                        
+<!--this is the smart button for the payslips must be changed to map to the reports-->
+<!--
+<div class="oe_button_box" name="button_box">
+    <button name="action_open_payslips" class="oe_stat_button" icon="fa-book" type="object" help="Generated Payslips" attrs="{'invisible': [('payslip_count', '=', 0)]}">
+        <div class="o_field_widget o_stat_info">
+            <span class="o_stat_value"><field name="payslip_count"/></span>
+            <span class="o_stat_text">Payslips</span>
+        </div>
+    </button>
+</div>
+-->

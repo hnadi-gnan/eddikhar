@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_appraisal_employee_appraisal,hr.kpiitem,model_hr_kpiitem,base.group_user,1,1,1,1
+access_appraisal_report_appraisal_report,hr.appraisal.report,model_hr_appraisal_report,base.group_user,1,1,1,1
+access_appraisal_report_line_appraisal_report_line,hr.appraisal.report.line,model_hr_appraisal_report_line,base.group_user,1,1,1,1
+access_kpiitem_category_kpiitem_category,hr.kpiitem.category,model_hr_kpiitem_category,base.group_user,1,1,1,1
+access_appraisal_report_run_appraisal_report_run,hr.appraisal.report.run,model_hr_appraisal_report_run,base.group_user,1,1,1,1
+access_appraisal_report_employees,hr.appraisal.report.employees,model_hr_appraisal_report_employees,base.group_user,1,1,1,1
