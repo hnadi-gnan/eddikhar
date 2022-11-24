@@ -2,10 +2,18 @@
 
 from odoo import fields, models, _
 
-
+class AccountNoticReport(models.Model):
+    _name = 'account.noticereport'
+    serial_number = fields.Integer(string = 'serial number' , required=True)
+    account_move_ids = fields.One2many('account.move', 'account_notice_id', string = 'entries')
+    
+    
+    
+    
 class AccountMove(models.Model):
     _inherit = "account.move"
-
+    serial_number = fields.Integer(string = 'serial number' , required=True)
+    account_notice_id = fields.Many2one ('account.noticereport')
     notice = fields.Boolean(string = 'Is Notice', required=True, readonly=True, copy=False, default = True)
     notice_type = fields.Selection(selection=[(
         'send', 'Send'), ('receive', 'Receive')], string='Notice Type', required=True, readonly=True, copy=False, tracking=True)

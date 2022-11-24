@@ -1,0 +1,66 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="exchange_orders_list">
+      <field name="name">exchange_orders.exchange_orders.list</field>
+      <field name="model">exchange_orders.exchange_orders</field>
+      <field name="arch" type="xml">
+        <tree>
+          <header>
+                    <field name="name"/>
+          </header>
+                    <field name="company_currency_id" invisible="1"/>
+                    <field name="date"/>
+                    <field name="payment_method_line_id"/>
+                    <field name="partner_id" string="Customer"/>
+                    <field name="currency_id" string="Payment Currency" groups="base.group_multi_currency" optional="hide"/>
+                    <field name="amount" widget="monetary" string="Amount"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="exchange_orders_action_window">
+      <field name="name">Exchange Orders</field>
+      <field name="res_model">exchange_orders.exchange_orders</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="exchange_orders.action_server">
+      <field name="name">exchange_orders server</field>
+      <field name="model_id" ref="model_exchange_orders_exchange_orders"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="exchange_orders" id="exchange_orders.menu" parent="account_accountant.menu_accounting" sequence="40"/>
+
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="exchange_orders.menu_1" parent="exchange_orders.menu_root"/>
+    <menuitem name="Menu 2" id="exchange_orders.menu_2" parent="exchange_orders.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="exchange_orders.menu_1_list" parent="exchange_orders.menu_1"
+              action="exchange_orders.action_window"/>
+    <menuitem name="Server to list" id="exchange_orders" parent="exchange_orders.menu_2"
+              action="exchange_orders.action_server"/>
+-->
+  </data>
+</odoo>
